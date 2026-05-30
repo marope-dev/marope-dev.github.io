@@ -40,27 +40,7 @@
         <p class="section-kicker">📖 Abstract</p>
         <div class="abstract-card">
           <p>
-            Humans exhibit remarkable motor agility, enabling a wide range of dynamic
-            skills such as running and jumping, which highlights the great potential of
-            humanoid robots for athletic locomotion. Among athletic sports, long rope
-            skipping requires two rope turners to cooperatively swing the rope while
-            adapting to different skipping rhythms, making it a meaningful yet challenging
-            task for humanoid robots. Although existing methods for humanoid sports have
-            achieved success in single-agent and interaction-free settings, such as
-            running, dancing, and parkour, task scenarios that require precise coordination
-            among multiple participants remain largely unexplored. To this end, we propose
-            Marope, a multi-agent reinforcement learning framework for cooperative long
-            rope skipping with multiple humanoid robots. Marope adopts a hierarchical
-            reinforcement learning framework for policy training. At the lower level, it
-            learns decentralized rope manipulation policies through MARL, while at the
-            upper level, a centralized scheduling policy is trained to coordinate the
-            execution of the lower-level policies. To improve generalization across
-            different jumping styles, Marope further incorporates diverse jumping policies
-            into cooperative game training. We evaluate our approach on the Unitree G1
-            humanoid robot in both simulation and real-world settings. Experimental
-            results demonstrate that Marope outperforms various baselines, achieving more
-            efficient and stable rope manipulation as well as more robust and adaptable
-            cooperation with diverse jumping policies.
+            Humans exhibit remarkable motor agility, enabling a wide range of dynamic skills such as running and jumping, which highlights the great potential of humanoid robots for athletic locomotion. Among athletic sports, long rope skipping requires two rope turners to cooperatively swing the rope while adapting to a player under different jumping rhythms, making it a meaningful yet challenging task for humanoid robots. Although existing methods for humanoid sports have achieved success in single-agent and interaction-free settings, such as running, dancing, and parkour, task scenarios that require precise coordination among multiple participants remain largely unexplored. To this end, we propose Marope, a multi-agent reinforcement learning (MARL) framework for cooperative long rope skipping with multiple humanoid robots. Specifically, Marope adopts a hierarchical reinforcement learning framework for policy training. At the lower level, it learns decentralized rope manipulation policies through MARL, while at the upper level, a centralized scheduling policy is trained to coordinate the execution of the lower-level policies. To improve generalization across different player behavioral styles, Marope further incorporates diverse jumping policies into cooperative game training. We evaluate our approach on Unitree G1 humanoid robots in both simulation and real-world settings. Experimental results demonstrate that Marope outperforms various baselines, achieving more efficient and stable rope manipulation as well as more robust and adaptable cooperation with varied players.
           </p>
         </div>
       </section>
@@ -71,7 +51,9 @@
         </div>
         <figure class="method-figure">
           <img src="assets/main.svg" alt="Overview of Marope" />
-          <figcaption>Overview of the Marope framework.</figcaption>
+          <figcaption>
+            Overview of Marope. (a) For long rope skipping task, Marope builds a pipeline for learning long rope skipping skills on multiple humanoid robots (b) A hierarchical coordination framework is used for efficient coordination with player under specific jump rhythm. (c) The low-level decentralized rope manipulation policy is trained via MARL. (d) Through an IPM-based diversity intrinsic objective, diverse player behaviors are discovered to improve generality of high-level scheduling policy.
+          </figcaption>
         </figure>
       </section>
 
@@ -216,7 +198,7 @@
 
       <section id="citation" class="section">
         <p class="section-kicker">📌 Citation</p>
-        <pre><code>@inproceedings{anonymous2024marope,
+        <pre><code>@inproceedings{anonymous2026marope,
   title     = {Cooperative Long Rope Skipping via Multi-Agent Reinforcement Learning},
   author    = {Anonymous Authors},
   booktitle = {Under Review},
