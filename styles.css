@@ -30,8 +30,7 @@ body {
     radial-gradient(circle at 82% 8%, rgba(24, 183, 166, 0.13), transparent 28rem),
     linear-gradient(180deg, #f8fbff 0%, var(--bg) 38%, #eef3f8 100%);
   color: var(--ink);
-  font-family:
-    Georgia, "Times New Roman", "Noto Serif", "Liberation Serif", Times, serif;
+  font-family: Georgia, "Times New Roman", Times, serif;
   line-height: 1.65;
 }
 
@@ -49,27 +48,6 @@ img {
   min-height: 760px;
   overflow: hidden;
   position: relative;
-}
-
-.site-header::before,
-.site-header::after {
-  border: 1px solid rgba(47, 109, 246, 0.18);
-  border-radius: 999px;
-  content: "";
-  height: 520px;
-  position: absolute;
-  width: 520px;
-  z-index: -1;
-}
-
-.site-header::before {
-  right: -170px;
-  top: 140px;
-}
-
-.site-header::after {
-  bottom: 24px;
-  left: -220px;
 }
 
 .nav {
@@ -135,14 +113,14 @@ img {
   gap: 46px;
   grid-template-columns: minmax(0, 1fr);
   margin: 0 auto;
-  max-width: var(--max-width);
+  max-width: 1320px;
   min-height: 560px;
   padding: 72px 24px 88px;
 }
 
 .hero-copy {
   margin: 0 auto;
-  max-width: 980px;
+  max-width: 1240px;
   position: relative;
   text-align: center;
 }
@@ -173,6 +151,7 @@ p {
 
 h1 {
   font-size: clamp(2rem, 3.8vw, 3.4rem);
+  font-weight: 600;
   letter-spacing: -0.05em;
   line-height: 1;
   margin-left: auto;

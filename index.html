@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Cooperative Long Rope Skipping via Multi-Agent Reinforcement Learning"
+      content="Cooperative Long Rope Skipping via Hierarchical Multi-Agent Reinforcement Learning"
     />
-    <title>Cooperative Long Rope Skipping via Multi-Agent Reinforcement Learning</title>
+    <title>Cooperative Long Rope Skipping via Hierarchical Multi-Agent Reinforcement Learning</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -18,14 +18,13 @@
           <a href="#abstract">Abstract</a>
           <a href="#method">Method</a>
           <a href="#demos">Demos</a>
-          <a href="#experiments">Experiments</a>
           <a href="#citation">Citation</a>
         </div>
       </nav>
 
       <section id="top" class="hero">
         <div class="hero-copy">
-          <h1>Cooperative Long Rope Skipping via Multi-Agent Reinforcement Learning</h1>
+          <h1>Cooperative Long Rope Skipping via Hierarchical Multi-Agent Reinforcement Learning</h1>
           <p class="authors">Anonymous Authors</p>
         </div>
       </section>
@@ -36,7 +35,7 @@
         <p class="section-kicker">📖 Abstract</p>
         <div class="abstract-card">
           <p>
-            Humans exhibit remarkable motor agility, enabling a wide range of dynamic skills such as running and jumping, which highlights the great potential of humanoid robots for athletic locomotion. Among athletic sports, long rope skipping requires two rope turners to cooperatively swing the rope while adapting to a player under different jumping rhythms, making it a meaningful yet challenging task for humanoid robots. Although existing methods for humanoid sports have achieved success in single-agent and interaction-free settings, such as running, dancing, and parkour, task scenarios that require precise coordination among multiple participants remain largely unexplored. To this end, we propose Marope, a multi-agent reinforcement learning (MARL) framework for cooperative long rope skipping with multiple humanoid robots. Specifically, Marope adopts a hierarchical reinforcement learning framework for policy training. At the lower level, it learns decentralized rope manipulation policies through MARL, while at the upper level, a centralized scheduling policy is trained to coordinate the execution of the lower-level policies. To improve generalization across different player behavioral styles, Marope further incorporates diverse jumping policies into cooperative game training. We evaluate our approach on Unitree G1 humanoid robots in both simulation and real-world settings. Experimental results demonstrate that Marope outperforms various baselines, achieving more efficient and stable rope manipulation as well as more robust and adaptable cooperation with varied players.
+            Cooperative long rope skipping requires two humanoid rope turners to manipulate a shared deformable rope while maintaining balance and synchronizing its rotation with a jumper’s rhythm. Existing humanoid sport approaches centered on individual athletic skills or independent motion replay offer limited mechanisms for handling the physical coupling through the rope and adapting its motion to the jumper’s phase. To address this challenge, we propose Marope, a hierarchical multi-agent reinforcement learning framework that combines decentralized rope manipulation with centralized rhythm scheduling. Low-level policies trained with an adversarial motion prior provide closed-loop rope control through a compact command interface, which a high-level scheduler uses to synchronize rope rotation with jumping. An integral probability metric-based diversity objective further discovers varied jumping behaviors to augment cooperative training. In simulation, Marope achieves a mean successful-jump rate of 78.7% on held-out jumping policies. We also deploy Marope in four representative real-world coordination scenarios, all of which achieve a success rate of more than 70%, showcasing the heterogeneous coordination capability of Marope across different embodiments.
           </p>
         </div>
       </section>
@@ -48,126 +47,9 @@
         <figure class="method-figure">
           <img src="assets/main.svg" alt="Overview of Marope" />
           <figcaption>
-            Overview of Marope. (a) For long rope skipping task, Marope builds a pipeline for learning long rope skipping skills on multiple humanoid robots (b) A hierarchical coordination framework is used for efficient coordination with player under specific jump rhythm. (c) The low-level decentralized rope manipulation policy is trained via MARL. (d) Through an IPM-based diversity intrinsic objective, diverse player behaviors are discovered to improve generality of high-level scheduling policy.
+            Overview of Marope. (a) For the long rope skipping task, Marope builds a pipeline for learning long rope skipping skills on multiple robots. (b) A hierarchical coordination framework is used for efficient coordination with a player. (c) The low-level decentralized rope manipulation policy combines MARL with an adversarial motion prior. (d) Through an IPM-based diversity intrinsic, diverse behaviors are discovered to improve the generality of the high-level scheduling policy.
           </figcaption>
         </figure>
-      </section>
-
-      <section id="experiments" class="section">
-        <div class="section-heading">
-          <p class="section-kicker">📊 Experiments</p>
-        </div>
-
-        <article class="table-card">
-          <div class="table-wrap">
-            <table>
-              <caption>
-                Simulation Results of Rope Manipulation
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">Category</th>
-                  <th scope="col">Metrics</th>
-                  <th scope="col">Ours</th>
-                  <th scope="col">Single Agent</th>
-                  <th scope="col">Open Loop</th>
-                  <th scope="col">w/o Segment Sampling</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th rowspan="2" scope="rowgroup">Rope Manipulation</th>
-                  <td><i>E</i><sub>rot</sub> (↓)</td>
-                  <td class="best">1.719 ± 0.332</td>
-                  <td>2.733 ± 0.539</td>
-                  <td>6.754 ± 2.018</td>
-                  <td>2.223 ± 0.484</td>
-                </tr>
-                <tr>
-                  <td><i>E</i><sub>wid</sub> (↓)</td>
-                  <td class="best">0.063 ± 0.011</td>
-                  <td>0.136 ± 0.030</td>
-                  <td>0.284 ± 0.135</td>
-                  <td>0.087 ± 0.038</td>
-                </tr>
-                <tr>
-                  <th rowspan="2" scope="rowgroup">Coordinated Movement</th>
-                  <td><i>E</i><sub>lin</sub> (↓)</td>
-                  <td class="best">0.103 ± 0.011</td>
-                  <td>0.222 ± 0.052</td>
-                  <td>0.199 ± 0.049</td>
-                  <td>0.121 ± 0.024</td>
-                </tr>
-                <tr>
-                  <td><i>E</i><sub>ang</sub> (↓)</td>
-                  <td class="best">0.109 ± 0.041</td>
-                  <td>0.114 ± 0.039</td>
-                  <td>0.112 ± 0.040</td>
-                  <td>0.110 ± 0.041</td>
-                </tr>
-                <tr>
-                  <th rowspan="2" scope="rowgroup">Control Stability</th>
-                  <td>Act. Rate (↓)</td>
-                  <td>1.349 ± 0.130</td>
-                  <td>1.526 ± 0.207</td>
-                  <td class="best">0.945 ± 0.097</td>
-                  <td>1.300 ± 0.142</td>
-                </tr>
-                <tr>
-                  <td>Feet Slip. (↓)</td>
-                  <td class="best">0.040 ± 0.003</td>
-                  <td>0.122 ± 0.010</td>
-                  <td>0.082 ± 0.012</td>
-                  <td>0.053 ± 0.004</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
-
-        <article class="table-card">
-          <div class="table-wrap">
-            <table>
-              <caption>
-                Simulation Results of Player Coordination
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">Metric</th>
-                  <th scope="col">Ours</th>
-                  <th scope="col">w/o Scheduling</th>
-                  <th scope="col">w/o Player Diversity</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">Overlap Ratio (↓)</th>
-                  <td class="best">0.090 ± 0.049</td>
-                  <td>0.392 ± 0.140</td>
-                  <td>0.120 ± 0.094</td>
-                </tr>
-                <tr>
-                  <th scope="row">Phase Tracking Error (↓)</th>
-                  <td class="best">0.397 ± 0.115</td>
-                  <td>1.092 ± 0.273</td>
-                  <td>0.414 ± 0.155</td>
-                </tr>
-                <tr>
-                  <th scope="row">Jumper Tracking Error (↓)</th>
-                  <td class="best">0.116 ± 0.022</td>
-                  <td>0.182 ± 0.360</td>
-                  <td>0.172 ± 0.021</td>
-                </tr>
-                <tr>
-                  <th scope="row">Complete Rate (↑)</th>
-                  <td class="best">0.787 ± 0.204</td>
-                  <td>0.358 ± 0.207</td>
-                  <td>0.751 ± 0.216</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </article>
       </section>
 
       <section id="demos" class="section">
@@ -237,7 +119,7 @@
       <section id="citation" class="section">
         <p class="section-kicker">📌 Citation</p>
         <pre><code>@inproceedings{anonymous2026marope,
-  title     = {Cooperative Long Rope Skipping via Multi-Agent Reinforcement Learning},
+  title     = {Cooperative Long Rope Skipping via Hierarchical Multi-Agent Reinforcement Learning},
   author    = {Anonymous Authors},
   booktitle = {Under Review},
   year      = {2026}
@@ -246,7 +128,7 @@
     </main>
 
     <footer class="footer">
-      <p>Cooperative Long Rope Skipping via Multi-Agent Reinforcement Learning</p>
+      <p>Cooperative Long Rope Skipping via Hierarchical Multi-Agent Reinforcement Learning</p>
       <a href="#top">Back to top</a>
     </footer>
   </body>
